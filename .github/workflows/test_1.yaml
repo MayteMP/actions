@@ -1,6 +1,13 @@
 name: Hola Mundo
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
 
 jobs:
   hola:
@@ -23,5 +30,8 @@ jobs:
     needs: hola
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4.1.7
+            
     - name: LS
       run: ls -al
